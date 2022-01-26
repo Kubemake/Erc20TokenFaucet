@@ -44,9 +44,8 @@ class Erc20Token {
       if (nnc > this.nonce) {
         this.nonce = nnc;
       }
-
-      let txHash = sendTransaction(this.nonce);
       this.nonce += 1;
+      let txHash = sendTransaction(this.nonce);
       console.log({txHash, nonce: this.nonce});
       return txHash;
     } catch (e) {
