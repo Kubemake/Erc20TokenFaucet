@@ -21,6 +21,7 @@ configStr += "module.exports.privateKey = '" + program.privateKey + "';";
 fs.writeFileSync('./app/lib/config.js', configStr);
 
 require('egg').startCluster({
+    workers: 1,
     baseDir: __dirname,
     port: process.env.PORT || 3000, // default to 7001
 });

@@ -12,6 +12,7 @@ function getWeb3Connection(ethNode) {
     } else {
         console.log('connected web3 ' + ethNode);
     }
+
     let sync = web3.eth.syncing;
     if (sync) {
         console.log("Still syncing ...");
