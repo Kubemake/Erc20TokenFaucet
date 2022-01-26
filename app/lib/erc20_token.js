@@ -11,7 +11,7 @@ class Erc20Token {
     this.privateKey = Buffer.from(privateKey, 'hex');
     this.signer = signer;
     this.tokenContract = web3.eth.contract(ERC20Interface.abi);
-        this.nonce = web3.eth.getTransactionCount(signer);
+    this.nonce = web3.eth.getTransactionCount(signer);
   }
 
   transfer(contractAddress, toAddress, amount) {
@@ -31,7 +31,7 @@ class Erc20Token {
     let params = [toAddress, etherSigner.toWei(amount), {from: signer}];
 
     function sendTransaction(nonce) {
-      let signedTx = etherSigner.contractTransferSign('transfer', params, contractAddress,  nonce, 0);
+      let signedTx = etherSigner.contractTransferSign('transfer', params, contractAddress, nonce, 0);
       try {
         return web3.eth.sendRawTransaction(signedTx);
       } catch (e) {
@@ -46,6 +46,7 @@ class Erc20Token {
       }
 
       let txHash = sendTransaction(this.nonce);
+      this.nonce += 1;
       console.log({txHash, nonce: this.nonce});
       return txHash;
     } catch (e) {
