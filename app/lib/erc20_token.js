@@ -25,7 +25,7 @@ class Erc20Token {
       throw new Error('you input address error!');
     }
 
-    let gasPrice = web3.eth.gasPrice;
+    let gasPrice = +web3.eth.gasPrice * 1.1;
     let etherSigner = new EtherSigner(this.tokenContract.at(contractAddress), privateKey, gasPrice, gasLimit);
 
     let params = [toAddress, etherSigner.toWei(amount), {from: signer}];
