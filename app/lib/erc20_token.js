@@ -4,6 +4,7 @@ const ERC20Interface = require('./contract/ERC20Interface.sol.js');
 const EthereumTx = require('ethereumjs-tx');
 const EtherSigner = require('ethereum-offline-sign');
 const gasLimit = 4000000;
+const BigNumber = require('bignumber.js');
 
 class Erc20Token {
   constructor(web3, privateKey, signer) {
@@ -25,7 +26,8 @@ class Erc20Token {
       throw new Error('you input address error!');
     }
 
-    let gasPrice = +web3.eth.gasPrice * 1.1;
+    let gasPrice = new BigNumber(web3.eth.gasPrice).times(1.1).toFixed(0);
+
     let etherSigner = new EtherSigner(this.tokenContract.at(contractAddress), privateKey, gasPrice, gasLimit);
 
     let params = [toAddress, etherSigner.toWei(amount), {from: signer}];
