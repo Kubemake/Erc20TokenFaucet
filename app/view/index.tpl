@@ -34,12 +34,14 @@
                         <input type="text" class="form-control" id="user_address" placeholder="input address">
                     </div>
                     <div class="col-sm-3" id="token_address">
-                        <button id="request_token" name="request_token" key={{hostUrl}} class="btn btn-success" style="margin: 4px;">
-                            request {{amount}} token from faucet
+                        <button id="request_token" name="request_token" key={{hostUrl}} class="btn btn-success
+                        " style="margin: 4px;">
+                        request {{amount}} token from faucet
                         </button>
                     </div>
                 </div>
-                <div>Token recycle address: <a>{{signer}}</a></div><p/>
+                <div>Token recycle address: <a href="https://ropsten.etherscan.io/address/{{signer}}" target="_blank">{{signer}}</a></div>
+                <p/>
                 <div>You can request <a href="https://faucet.ropsten.be/" target="_blank">ETH</a></div>
 
             </div>

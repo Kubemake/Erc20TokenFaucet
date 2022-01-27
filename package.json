@@ -1,51 +1,23 @@
 {
-  "name": "Erc20TokenFaucet",
+  "name": "myfaucet",
   "version": "1.0.0",
-  "description": "Testnet Erc20 tokens faucet",
-  "private": true,
+  "description": "Erc20 testnet faucet",
+  "main": "index.js",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "commander": "^2.19.0",
-    "egg": "^2.2.1",
-    "egg-cors": "^2.1.1",
-    "egg-scripts": "^2.5.0",
-    "egg-validate": "^2.0.1",
-    "egg-view-nunjucks": "^2.2.0",
-    "ethereum-offline-sign": "^1.0.2",
-    "ethereumjs-tx": "^1.3.7",
-    "lodash": "^4.17.11",
-    "web3": "^0.20.1"
+    "egg": "^2.33.1",
+    "egg-dotenv": "^1.0.0",
+    "egg-view-nunjucks": "^2.3.0",
+    "ethereumjs-wallet": "^1.0.2",
+    "web3": "^1.7.0",
+    "web3-utils": "^1.7.0"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
-    "autod-egg": "^1.0.0",
-    "egg-bin": "^4.3.5",
-    "egg-ci": "^1.8.0",
-    "egg-mock": "^3.14.0",
-    "eslint": "^4.11.0",
-    "eslint-config-egg": "^6.0.0",
-    "webstorm-disable-index": "^1.2.0"
-  },
-  "engines": {
-    "node": ">=8.9.0"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
-  },
-  "ci": {
-    "version": "8"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "drunken",
-  "license": "MIT"
+    "egg-bin": "^4.17.0"
+  }
 }

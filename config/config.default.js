@@ -1,42 +1,31 @@
-'use strict';
-const path = require('path');
-
 module.exports = appInfo => {
-    const config = exports = {};
-    config.middleware = ['errorHandler'];
+  const config = {};
+  config.middleware = ['errorHandler'];
+  config.keys = '5creX1BXp*YkqsXm@K$hZW63OE)L5SEOUVSvz)*O%UZj#Av3!n-N-UtBbr#79uyH';
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.tpl': 'nunjucks',
+    },
+  };
+  config.security = {
+    csrf: {
+      queryName: '_csrf',
+      bodyName: '_csrf',
+      headerName: 'x-csrf-token',
+      ignoreJSON: true,
+    },
+    domainWhiteList: ['http://127.0.0.1:7001', 'http://localhost:7001'],
+  };
+  config.custom = {
+    host: 'http://127.0.0.1:7001',
+    tokensFile: 'tokens.js',
+    privateKey: '',
+    amount: 1000,
+    node_uri: 'https://ropsten.infura.io/v3/852850796333476b92a8f7b56be10180',
+    signer: '',
+    gasAdjustment: 1, //gwei
+  };
 
-    config.security = {
-        csrf: {
-            queryName: '_csrf',
-            bodyName: '_csrf',
-            headerName: 'x-csrf-token',
-            ignoreJSON: true
-        },
-        domainWhiteList: ["https://faucet.enft.ai", "http://localhost:3000/", "http://localhost:3000", "http://127.0.0.1:3000/", "http://127.0.0.1:3000"]
-    };
-
-    // exports.cors = {
-    //     origin: '*',
-    //     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
-    // };
-
-    config.view = {
-        defaultViewEngine: 'nunjucks',
-        mapping: {
-            '.nj': 'nunjucks',
-        },
-        root: [
-            path.join(appInfo.baseDir, 'app/view'),
-            path.join(appInfo.baseDir, 'path/to/another'),
-        ].join(',')
-    };
-
-    config.keys = appInfo.name + '_1538988032206_7794';
-
-    config.ether = {
-        signer: '0x7A5CC9D2aB8b8aBC369bA9ADBccF1B2c2f8957B1',
-        amount: 1000
-    };
-
-    return config;
+  return config;
 };

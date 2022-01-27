@@ -1,26 +1,30 @@
-'use strict';
+const path = require('path');
+const Controller = require('egg').Controller;
 
-const tokens = require('../lib/tokens');
-const configs = require('../lib/config');
-module.exports = app => {
-    class HomeController extends app.Controller {
-        async index() {
-            let {ctx, config} = this;
-            const data = {tokens, amount: config.ether.amount, hostUrl: configs.hostPoint, signer: config.ether.signer};
-            await ctx.render('index.tpl', data);
-        }
+class HomeController extends Controller {
+  async index() {
+     const {tokensFile, signer, host, amount} = this.config.custom;
 
-        async create() {
-            let {ctx, config} = this;
-            let data = ctx.request.body;
-            ctx.validate({
-                token: 'string',
-                address: 'string'
-            }, data);
-            let hash = ctx.app.erc20Token.transfer(data.token, data.address, config.ether.amount);
-            this.success(hash);
-        }
-    }
+    const tokens = require(path.join(this.app.baseDir, 'app/extend', tokensFile));
 
-    return HomeController;
-};
+    const data = {tokens, amount, hostUrl: host, signer};
+
+    await this.ctx.render('index.tpl', data);
+  }
+
+  async create() {
+    let data = this.ctx.request.body;
+    const {amount} = this.config.custom;
+    const {service} = this;
+    const result = await service.eth.transfer(data.token, data.address, amount);
+
+    this.ctx.body = {
+      success: true,
+      msg: 'OK',
+      statusCode: 200,
+      data: result,
+    };
+  }
+}
+
+module.exports = HomeController;
