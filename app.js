@@ -4,6 +4,7 @@ const Web3 = require('web3');
 class BtStrap {
   constructor(app) {
     this.app = app;
+    this.app.limits = {}
   }
 
   willReady() {

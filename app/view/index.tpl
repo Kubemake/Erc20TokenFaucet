@@ -1,13 +1,13 @@
 <html>
 <head>
-    <title>Erc20 Faucet</title>
+    <title>Erc20 BSC TESTNET Faucet</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/main.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </head>
 <body>
-<nav class="navbar navbar-default"><h1 class="container-fluid">TestNet Erc20 Tokens Faucet</h1></nav>
+<nav class="navbar navbar-default"><h1 class="container-fluid">TestNet Erc20 Binance Smart Chain Tokens Faucet</h1></nav>
 <section class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -40,9 +40,9 @@
                         </button>
                     </div>
                 </div>
-                <div>Token recycle address: <a href="https://ropsten.etherscan.io/address/{{signer}}" target="_blank">{{signer}}</a></div>
+                <div>Token recycle address: <a href="https://testnet.bscscan.com/address/{{signer}}" target="_blank">{{signer}}</a></div>
                 <p/>
-                <div>You can request <a href="https://faucet.ropsten.be/" target="_blank">ETH</a></div>
+                <div>You can request <a href="https://testnet.binance.org/faucet-smart" target="_blank">BNB</a></div>
 
             </div>
 

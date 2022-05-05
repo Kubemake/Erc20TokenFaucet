@@ -1,7 +1,7 @@
 $("#token_select").change(function () {
     var address = $("#token_select").val();
     $("#address").remove();
-    var url = "https://ropsten.etherscan.io/address/" + address;
+    var url = "https://testnet.bscscan.com/address/" + address;
     $("#token_address").append('<a href=' + url + ' target="_blank" id="address" class="control-label">' + address + '</a>');
 });
 
@@ -25,7 +25,7 @@ $("#request_token").click(function () {
             result => {
                 console.log(result);
                 if (result.success) {
-                    var url = "https://ropsten.etherscan.io/tx/" + result.data;
+                    var url = "https://testnet.bscscan.com/tx/" + result.data;
                     $("#transactions").append('<a href=' + url + ' target="_blank" id="txHash" class="control-label">' + result.data + '</a>');
                 } else {
                     alert('Request error: ' + result.error)
