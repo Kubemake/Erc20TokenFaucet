@@ -51,7 +51,6 @@ class EthService extends Service {
         if (err.message.includes('nonce too low')) {
           EthService.nonce = EthService.nonce + 1;
         }
-        throw new Error(err.message);
       });
       return signed.transactionHash;
     } catch (err) {
