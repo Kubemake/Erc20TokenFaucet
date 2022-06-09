@@ -21,7 +21,7 @@ module.exports = appInfo => {
     host: 'https://faucet.enft.ai', //http://127.0.0.1:7001',
     tokensFile: 'tokens.js',
     privateKey: '',
-    amount: 1000,
+    amount: 6000,
     node_uri: 'http://bsc:6546541p@95.216.46.114:18545',
     signer: '',
     gasAdjustment: 1, //gwei
