@@ -8,13 +8,13 @@ module.exports = [
   {
     symbol: 'AMT',
     name: 'AMT',
-    address: '0x723826d09Aba18a729044d16D545f34429157c13',
+    address: '0xCbAA1b9BFfF56d05185c8907A0a18374DC81273C',
     limit: 0
   },
   {
     symbol: 'AZY',
     name: 'AZY',
-    address: '0xE8709661136ae8FcB36f620c725b346828030116',
+    address: '0x4Ab7C1BE7a1d4a6b4Ab00c25b6a6FFF71A8328A0',
     limit: 0
   }
 ];
