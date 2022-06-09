@@ -27,5 +27,11 @@ module.exports = appInfo => {
     gasAdjustment: 1, //gwei
   };
 
+  config.cluster = {
+    listen: {
+      port: 7002,
+    }
+  };
+
   return config;
 };
