@@ -18,7 +18,7 @@ module.exports = appInfo => {
     domainWhiteList: ['http://127.0.0.1:7001', 'http://localhost:7001', 'http://127.0.0.1:7001/', 'http://localhost:7001/'],
   };
   config.custom = {
-    host: 'https://faucet.enft.ai', //http://127.0.0.1:7001',
+    host: 'https://amtfaucet.amazy.io', //http://127.0.0.1:7001',
     tokensFile: 'tokens.js',
     privateKey: '',
     amount: 1000,
