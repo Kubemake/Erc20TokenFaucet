@@ -1,13 +1,20 @@
 module.exports = appInfo => {
-  const config = {};
-  config.middleware = ['errorHandler'];
-  config.keys = '5creX1BXp*YkqsXm@K$hZW63OE)L5SEOUVSvz)*O%UZj#Av3!n-N-UtBbr#79uyH';
+  const config = {}
+  config.middleware = ['errorHandler']
+  config.keys = '5creX1BXp*YkqsXm@K$hZW63OE)L5SEOUVSvz)*O%UZj#Av3!n-N-UtBbr#79uyH'
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
       '.tpl': 'nunjucks',
     },
-  };
+  }
+
+  config.cluster = {
+    listen: {
+      port: 7002,
+    }
+  }
+
   config.security = {
     csrf: {
       queryName: '_csrf',
@@ -15,8 +22,9 @@ module.exports = appInfo => {
       headerName: 'x-csrf-token',
       ignoreJSON: true,
     },
-    domainWhiteList: ['http://127.0.0.1:7001', 'http://localhost:7001', 'http://127.0.0.1:7001/', 'http://localhost:7001/'],
-  };
+    domainWhiteList: ['http://127.0.0.1:' + config.cluster.listen.port, 'http://localhost:' + config.cluster.listen.port, 'http://127.0.0.1:' + config.cluster.listen.port + '/', 'http://localhost:' + config.cluster.listen.port + '/'],
+  }
+
   config.custom = {
     host: 'https://amtfaucet.amazy.io', //http://127.0.0.1:7001',
     tokensFile: 'tokens.js',
@@ -25,13 +33,7 @@ module.exports = appInfo => {
     node_uri: 'http://bsc:6546541p@95.216.46.114:18545',
     signer: '',
     gasAdjustment: 1, //gwei
-  };
+  }
 
-  config.cluster = {
-    listen: {
-      port: 7002,
-    }
-  };
-
-  return config;
-};
+  return config
+}
