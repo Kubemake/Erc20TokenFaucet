@@ -41,7 +41,7 @@ class HomeController extends Controller {
     const current = tokens.filter(i => i.address === data.token)?.pop()
     let limit = 0
     const ipInfo = this.ctx.ip
-    const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().split('\r\n')
+    const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().replace("\r",'').split('\n')
 
     if (!whiteList.includes(data.address)) {
       return this.ctx.body = {
