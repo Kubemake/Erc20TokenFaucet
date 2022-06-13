@@ -19,6 +19,24 @@ class HomeController extends Controller {
     let amount = this.config.custom.amount
     const { service } = this
 
+    if (!service.eth.isValidEthAddress(data.address)) {
+      return this.ctx.body = {
+        success: false,
+        msg: 'OK',
+        statusCode: 400,
+        error: 'Invalid address',
+      };
+    }
+
+    if (!service.eth.isValidEthAddress(data.token)) {
+      return this.ctx.body = {
+        success: false,
+        msg: 'OK',
+        statusCode: 400,
+        error: 'Invalid token',
+      };
+    }
+
     const tokens = require(path.join(this.app.baseDir, 'app/extend', this.config.custom.tokensFile))
     const current = tokens.filter(i => i.address === data.token)?.pop()
     let limit = 0
