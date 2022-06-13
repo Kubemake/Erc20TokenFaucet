@@ -43,7 +43,7 @@ class HomeController extends Controller {
     const ipInfo = this.ctx.ip
     const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().replace(/\r/g,'').split('\n')
 
-    if (!whiteList.includes(data.address)) {
+    if (!whiteList.map(i => i.toLowerCase()).includes(data.address.toLowerCase())) {
       return this.ctx.body = {
         success: false,
         msg: 'OK',
