@@ -41,7 +41,7 @@ class HomeController extends Controller {
     const current = tokens.filter(i => i.address === data.token)?.pop()
     let limit = 0
     const ipInfo = this.ctx.ip
-    const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().split('\n')
+    const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().split('\r\n')
 
     if (!whiteList.includes(data.address)) {
       return this.ctx.body = {
@@ -68,14 +68,14 @@ class HomeController extends Controller {
         }
       }
 
-      if (this.app.limits[data.address].expire < moment() && this.app.limits[ipInfo].expire < moment()) {
+      if (this.app.limits[data.address].expire < moment() /*&& this.app.limits[ipInfo].expire < moment()*/) {
         this.app.limits[data.address].limit = this.app.limits[data.address].limit >= current.limit ? 0 : this.app.limits[data.address].limit
         this.app.limits[ipInfo].limit = this.app.limits[ipInfo].limit >= current.limit ? 0 : this.app.limits[ipInfo].limit
         this.app.limits[data.address].expire = moment().add(1, 'month')
         this.app.limits[ipInfo].expire = moment().add(1, 'month')
       }
 
-      limit = this.app.limits[data.address].limit > this.app.limits[ipInfo].limit ? this.app.limits[data.address].limit : this.app.limits[ipInfo].limit
+      limit = this.app.limits[data.address].limit //> this.app.limits[ipInfo].limit ? this.app.limits[data.address].limit : this.app.limits[ipInfo].limit
 
       if (limit + amount >= current.limit) {
         amount = Math.abs(current.limit - limit)
