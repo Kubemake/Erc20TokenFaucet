@@ -41,7 +41,7 @@ class HomeController extends Controller {
     const current = tokens.filter(i => i.address === data.token)?.pop()
     let limit = 0
     const ipInfo = this.ctx.ip
-    const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().replace("\r",'').split('\n')
+    const whiteList = fs.readFileSync(path.join(this.app.baseDir, 'config/whiteList')).toString().replace(/\r/g,'').split('\n')
 
     if (!whiteList.includes(data.address)) {
       return this.ctx.body = {
@@ -56,23 +56,23 @@ class HomeController extends Controller {
     if (current?.limit > 0) {
       if (typeof this.app.limits[data.address] === 'undefined') {
         this.app.limits[data.address] = {
-          limit: this.app.limits?.[ipInfo]?.limit ?? 0,
-          expire: this.app.limits?.[ipInfo]?.expire ?? moment().add(1, 'month')
+          limit: 0,
+          expire: moment().add(1, 'month')
         }
       }
 
-      if (typeof this.app.limits[ipInfo] === 'undefined') {
-        this.app.limits[ipInfo] = {
-          limit: this.app.limits[data.address].limit ?? 0,
-          expire: this.app.limits?.[data.address]?.expire ?? moment().add(1, 'month')
-        }
-      }
+      // if (typeof this.app.limits[ipInfo] === 'undefined') {
+      //   this.app.limits[ipInfo] = {
+      //     limit: this.app.limits[data.address].limit ?? 0,
+      //     expire: this.app.limits?.[data.address]?.expire ?? moment().add(1, 'month')
+      //   }
+      // }
 
       if (this.app.limits[data.address].expire < moment() /*&& this.app.limits[ipInfo].expire < moment()*/) {
         this.app.limits[data.address].limit = this.app.limits[data.address].limit >= current.limit ? 0 : this.app.limits[data.address].limit
-        this.app.limits[ipInfo].limit = this.app.limits[ipInfo].limit >= current.limit ? 0 : this.app.limits[ipInfo].limit
+        // this.app.limits[ipInfo].limit = this.app.limits[ipInfo].limit >= current.limit ? 0 : this.app.limits[ipInfo].limit
         this.app.limits[data.address].expire = moment().add(1, 'month')
-        this.app.limits[ipInfo].expire = moment().add(1, 'month')
+        // this.app.limits[ipInfo].expire = moment().add(1, 'month')
       }
 
       limit = this.app.limits[data.address].limit //> this.app.limits[ipInfo].limit ? this.app.limits[data.address].limit : this.app.limits[ipInfo].limit
@@ -105,7 +105,7 @@ class HomeController extends Controller {
 
     if (current?.limit > 0) {
       this.app.limits[data.address].limit = limit + amount
-      this.app.limits[ipInfo].limit = limit + amount
+      // this.app.limits[ipInfo].limit = limit + amount
     }
 
     this.ctx.body = {
