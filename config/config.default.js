@@ -32,7 +32,7 @@ module.exports = appInfo => {
     amount: 1000,
     node_uri: 'https://app.amazy.io:18545',
     signer: '',
-    gasAdjustment: 1, //gwei
+    gasAdjustment: 3, //gwei
   }
 
   return config
