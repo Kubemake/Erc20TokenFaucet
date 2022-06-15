@@ -30,7 +30,7 @@ module.exports = appInfo => {
     tokensFile: 'tokens.js',
     privateKey: '',
     amount: 1000,
-    node_uri: 'http://bsc:6546541p@95.216.46.114:18545',
+    node_uri: 'https://app.amazy.io:18545',
     signer: '',
     gasAdjustment: 1, //gwei
   }
