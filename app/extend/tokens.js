@@ -14,7 +14,7 @@ module.exports = [
   {
     symbol: 'AZY',
     name: 'AZY',
-    address: '0x4Ab7C1BE7a1d4a6b4Ab00c25b6a6FFF71A8328A0',
+    address: '0xABaa65c909619C5ebbDF993f9AF5f436A8a83736',
     limit: 0
   }
 ];
