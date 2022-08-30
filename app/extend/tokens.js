@@ -1,8 +1,8 @@
 module.exports = [
   {
-    symbol: 'AXSCBT',
-    name: 'AXSCBT',
-    address: '0x408B5DD6c26F1A4e4Db6D98f2fEfAa5A8F3B0611',
+    symbol: '_TST',
+    name: '_TST',
+    address: '0xd006D930993b32aC774113b5fF57b1c71167c0EA',
     limit: 6000
   }
 ]
